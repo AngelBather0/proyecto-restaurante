@@ -19,7 +19,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Home
 
-Route::get('/', [PageController::class, 'ShowProvinciasIndex'])->name('indexpage');
+Route::get('/', function () {
+    return view('home.index'); // Asegúrate de que el nombre 'index' coincida con tu archivo de vista
+})->name('indexpage');
 
 // Blogs
 
