@@ -352,7 +352,7 @@
 
         <div class="lg:pl-64 flex flex-col flex-1">
             <div
-                class="ml-auto w-full relative z-10 flex-shrink-0 flex h-16 border-b border-gray-200 lg:border-none h-100px flex justify-end">
+                class="ml-auto w-full relative z-10 flex-shrink-0 h-16 border-b border-gray-200 lg:border-none h-100px flex justify-end">
                 <button type="button"
                     class="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden">
                     <span class="sr-only">Open sidebar</span>
@@ -363,7 +363,7 @@
                     </svg>
                 </button>
                 <!-- Search bar -->
-                <div class="max-w-screen-2xl w-full mx-auto px-4 sm:px-6 lg:px-8 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-screen-2xl w-full mx-auto px-4 sm:px-6 lg:px-8">
 
                     <div class="flex-1 items-center flex justify-between my-6 rounded-2xl">
 

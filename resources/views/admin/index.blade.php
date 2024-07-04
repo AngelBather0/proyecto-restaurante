@@ -1,7 +1,7 @@
 @extends('template')
 @section('content')
 
-    <div class="max-w-screen-2xl w-full mx-auto px-4 sm:px-6 lg:px-8 px-4 sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-screen-2xl w-full mx-auto px-4 sm:px-6 lg:px-8 mt-12">
       <div class="d-flex align-items-center justify-center text-center py-[72px]">
         <img src="{{asset('images/adminIcon.svg')}}" class="max-w-[440px] mx-auto mb-[20px]" alt="">
         <h1 class="text-[26px] font-[600] mb-[10px] text-[#21325B]">¡Hola! Bienvenido Al Panel de Administracion</h1>
