@@ -6,7 +6,7 @@
         <img src="{{asset('images/adminIcon.svg')}}" class="max-w-[440px] mx-auto mb-[20px]" alt="">
         <h1 class="text-[26px] font-[600] mb-[10px] text-[#21325B]">¡Hola! Bienvenido Al Panel de Administracion</h1>
         <p class="max-w-[60%] mx-auto text-[#677788] font-[400] mb-[30px]">En este apartado podrás modificar toda la informacion de la pagina, acciones como Elimiar, Actualizar, Agregar o Ver las entradas e información que se muestran en la página son modificadas desde este CRM. <br><br> ¡Ve a uno de los apartados en el panel izquierdo para empezar a modificar!</p>
-        <h3><a href="https://dominicantravelling.com" class="block py-2 px-6 bg-[#21325B] w-[fit-content] mx-auto rounded-[4px] text-white hover:bg-[#182542] duration-500">Visita Dominican Traveling</a></h3>
+        <h3><a href="{{ route('indexpage') }}" class="block py-2 px-6 bg-[#21325B] w-[fit-content] mx-auto rounded-[4px] text-white hover:bg-[#182542] duration-500">Visita Restfolio</a></h3>
       </div>
     </div>
 

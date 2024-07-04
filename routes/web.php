@@ -1,13 +1,10 @@
 <?php
-
-use App\Http\Controllers\HabitacionController;
-use App\Http\Controllers\InformacionController;
-use App\Http\Controllers\PreguntaFrecuenteController;
-use App\Http\Controllers\TipoSitiosController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\GuiaController;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\LocalizationController;
 
 
@@ -23,17 +20,6 @@ Route::get('/', function () {
     return view('home.index'); // Asegúrate de que el nombre 'index' coincida con tu archivo de vista
 })->name('indexpage');
 
-// Blogs
-
-// Site details
-
-
-// Events
-
-
-// Single events
-
-// FAQs
 
 
 //      **************     Admin Routes     **********************
@@ -47,14 +33,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('admin.index');
     });
-    
-    Route::put('/guides/{id}/update-translation', [GuiaController::class, 'specificUpdate'])->name('guides.update_translation');
-    Route::resource('/guides', GuiaController::class)->middleware('verify.lugares');;
 
-    Route::get('/buscarguia', [GuiaController::class, 'search'])->name('search_guia');
+    Route::resource('/users', UserController::class);
 
-    
+    Route::get('/buscarusuario', [UserController::class, 'search'])->name('search_user');
 });
+
 
 
 

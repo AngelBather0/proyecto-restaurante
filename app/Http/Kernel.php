@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'verify.provincias' => \App\Http\Middleware\VerifyProvinciasExist::class,
         'verify.lugares' => \App\Http\Middleware\VerifyLugaresExist::class,
+        
     ];
 }

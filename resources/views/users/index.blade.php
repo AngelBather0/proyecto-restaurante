@@ -5,7 +5,7 @@
 
     <div class="max-w-screen-2xl w-full mx-auto px-4 sm:px-6 lg:px-8 px-4 sm:px-6 lg:px-8 mt-12">
 
-        <form action="{{route('search_guia')}}" method="get" class="flex items-center gap-5 w-full mt-12">
+        <form action="{{route('search_user')}}" method="get" class="flex items-center gap-5 w-full mt-12">
 
           <div class="bg-white rounded-md mb-8 w-full">
 
@@ -39,12 +39,12 @@
         </form>
 
         <div class="bg-white rounded-md">
-            <div class="mb-4 flex items-center justify-end px-8 pt-8">
-                <a href="{{ route('guides.create') }}">
-                    <button class="px-6 py-2 rounded bg-mundoVerdeGreen text-white flex items-center justify-center hover:bg-mundoVerdeDarkGreen duration-300">
-                        <img class="w-16px mr-2" src="images/plus.png" alt=""> 
-                        <span>Crear Entrada</span>
-                    </button>
+            <div class="mb-4 flex items-center justify-end px-8 pt-8 gap-5">
+                <a href="{{ route('users.create') }}">
+                      <button class="px-6 py-2 rounded bg-mundoVerdeGreen text-white flex items-center justify-center hover:bg-mundoVerdeDarkGreen duration-300">
+                          <img class="w-16px mr-2" src="images/plus.png" alt=""> 
+                          <span>Registrar usuario</span>
+                      </button>
                 </a>
             </div>
             <div class="px-4 sm:px-6 lg:px-8 pb-12">
@@ -55,55 +55,46 @@
                         <table class="min-w-full">
                           <thead class="bg-mundoVerdeGreen">
                             <tr>
-                              <th class="mx-w-50px py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6"></th>
+                              <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">ID</th>
                               <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Nombre</th>
-                              <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Lugar</th>
-                              <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Telefono</th>
-                              <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Publicado</th>
+                              <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">E-mail</th>
+                              <th scope="col" class="py-2 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">Rol</th>
                               <th scope="col" class="relative py-2 pl-3 pr-4 sm:pr-6 text-sm font-semibold text-white text-left">Modificar</th>
                             </tr>
                           </thead>
                           <tbody id="tableBody" class="bg-white">
                             <!-- Odd row -->
-                            @foreach($guias as $guia)
+                            @foreach($users as $user)
                               <tr>
-                                <td class="w-50px whitespace-nowrap py-2 pl-4 pr-3 text-lg font-medium text-gray-900 sm:pl-6 cursor-pointer"><i class="fas fa-arrows-alt-v"></i></td>
                                 <td class="w-1/6 whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-mundoVerdeGreen sm:pl-6 hover:underline">
-                                  <a href="{{ route('guides.show', $guia->GuiaID) }}">{{$guia->Nombre}}</a>
-                                </td>
-                                <td class="w-1/6 whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-mundoVerdeGreen sm:pl-6 hover:underline">
-                                  <a href="{{ route('places.show', $guia->lugar->LugarID) }}">{{$guia->lugar->Nombre}}</a>
-                                </td>
-                                <td class="w-2/6 max-w-xs sm:max-w-md whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-mundoVerdeGreen sm:pl-6 hover:underline overflow-hidden truncate"  >
-                                  <a href="{{ route('guides.edit', $guia->GuiaID) }}">{{$guia->Telefono}}</a>
+                                  <a href="{{ route('users.show', $user->id) }}">{{$user->id}}</a>
                                 </td>
                                 <td class="w-1/6 whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-mundoVerdeGreen sm:pl-6 hover:underline">
-                                  <div class="flex items-center">
-                                      <label class="switch">
-                                          <input class="publish_prod" data-id="15" data-status="publicado" type="checkbox" disabled
-                                          @if($guia->Estado == true)
-                                          checked
-                                          @endif
-                                          >
-                                          <span class="slider round"></span>
-                                      </label>
-                                  </div>
+                                  <a href="{{ route('users.show', $user->id) }}">{{$user->name}}</a>
                                 </td>
+                                <td class="w-1/6 whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-mundoVerdeGreen sm:pl-6 hover:underline">
+                                  <a href="{{ route('users.show', $user->id) }}">{{$user->email}}</a>
+                                </td>
+                                @foreach($user->roles as $role)
+                                  <td class="w-1/6 whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-mundoVerdeGreen sm:pl-6 hover:underline">
+                                    <a href="{{ route('users.show', $user->id) }}">{{$role->name}}</a>
+                                  </td>
+                                @endforeach
                                 <td class=" w-1/6 relative whitespace-nowrap py-4 pl-3 pr-4 sm:pr-6">
                                   <div class="flex items-center">
-                                      <a href="{{ route('guides.edit', $guia->GuiaID) }}">
+                                      <a href="{{ route('users.edit', $user->id) }}">
                                           <div class="w-35px h-35px cursor-pointer text-gray-500 flex items-center text-sm justify-center rounded-full mr-4 hover:bg-indigo-600 hover:text-white duration-300">
                                               <i class="far fa-edit"></i>
                                           </div>
                                       </a>
                                       <div>
-                                        <form action="{{ route('guides.destroy', $guia->GuiaID) }}" method="POST">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
 
                                           @csrf
                                           @method('DELETE') 
 
                                         <div>
-                                            <button class="w-35px h-35px cursor-pointer text-gray-500 flex items-center text-sm justify-center rounded-full hover:bg-red-600 hover:text-white duration-300" type="submit" onclick="return confirm('¿Seguro que desea eliminar el alojamiento?')"><i class="far fa-trash-alt"></i></button>
+                                            <button class="w-35px h-35px cursor-pointer text-gray-500 flex items-center text-sm justify-center rounded-full hover:bg-red-600 hover:text-white duration-300" type="submit" onclick="return confirm('¿Seguro que desea eliminar el usuario?')"><i class="far fa-trash-alt"></i></button>
                                         </div>
                                         </form> 
                                         
@@ -118,7 +109,7 @@
 
                         <div class="mt-10">
 
-                          {{ $guias->links() }}
+                          {{ $users->links() }}
 
                         </div>
 
